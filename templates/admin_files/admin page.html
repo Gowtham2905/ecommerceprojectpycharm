@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cycle Prices</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #007bff; /* Blue background */
+      color: white; /* White text color */
+    }
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #2196f3; /* Blue header color */
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+    }
+    .search-input {
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      margin-right: 10px;
+      font-size: 16px;
+    }
+    .search-button {
+      padding: 8px 16px;
+      border-radius: 5px;
+      background-color: #0056b3; /* Darker blue for button */
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 300px;
+      height: 300px;
+      background-color: #0056b3; /* Blue box for options */
+      border-radius: 10px;
+    }
+    .option-bar {
+      cursor: pointer;
+      font-size: 20px;
+      padding: 10px;
+    }
+    .details {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="search-bar">
+    <input type="text" class="search-input" placeholder="Search..." onkeyup="filterResults(this.value)">
+    <button class="search-button" onclick="filterResults(document.querySelector('.search-input').value)">Search</button>
+  </div>
+  <div class="options">
+    <div class="option-bar" onclick="showAmazonDetails()">Amazon</div>
+    <div class="option-bar" onclick="showFlipkartDetails()">Flipkart</div>
+    <div class="option-bar" onclick="showCycleCompanies()">Others</div>
+  </div>
+</div>
+
+<div class="details">
+  <!-- This section will display dynamic content based on user interaction -->
+</div>
+
+<script>
+  function showAmazonDetails() {
+    const detailsDiv = document.querySelector('.details');
+    detailsDiv.innerHTML = "<h2>Amazon Cycles</h2><p>Hero - ₹10,000</p><p>Heclers - ₹200</p>";
+  }
+
+  function showFlipkartDetails() {
+    const detailsDiv = document.querySelector('.details');
+    detailsDiv.innerHTML = "<h2>Flipkart Cycles</h2><p>Hero - ₹10,000</p><p>Heclers - ₹200</p>";
+  }
+
+  function showCycleCompanies() {
+    const detailsDiv = document.querySelector('.details');
+    detailsDiv.innerHTML = "<h2>Other E-commerce Cycles</h2><p>Hero, Heclers, Mountain Bikes</p>";
+  }
+
+  function filterResults(value) {
+    const lowercaseValue = value.toLowerCase();
+    const detailsDiv = document.querySelector('.details');
+
+    if (lowercaseValue === 'amazon') {
+      showAmazonDetails();
+    } else if (lowercaseValue === 'flipkart') {
+      showFlipkartDetails();
+    } else if (lowercaseValue === 'cycle company') {
+      showCycleCompanies();
+    } else {
+      detailsDiv.innerHTML = "<p>No results found!</p>";
+    }
+  }
+</script>
+
+</body>
+</html>
